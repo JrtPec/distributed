@@ -20,15 +20,11 @@ import java.util.ArrayList;
 public class Hello {
     private String name;
     private String customGreeting;
-    private ArrayList<String> users = new ArrayList<String>();
     
     @EJB
     private HelloBeanRemote helloRemote;
     
     public Hello() {
-        users.add("Jan");
-        users.add("Peter");
-        users.add("Tom");
     }
     
     public String getName(){
@@ -48,10 +44,6 @@ public class Hello {
     }
 
     public ArrayList<String> getUsers() {
-        return users;
-    }
-
-    public void setUsers(ArrayList<String> users) {
-        this.users = users;
+        return helloRemote.getUsers();
     }
 }

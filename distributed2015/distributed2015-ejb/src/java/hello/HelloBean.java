@@ -6,6 +6,7 @@
 package hello;
 
 import helloRemote.HelloBeanRemote;
+import java.util.ArrayList;
 import javax.ejb.Stateless;
 
 /**
@@ -18,5 +19,14 @@ import javax.ejb.Stateless;
     @Override
     public String sayHello(String name) {
         return "Bean speaking. Hello "+name;
+    }
+
+    @Override
+    public ArrayList<String> getUsers() {
+        ArrayList<String> users = new ArrayList<>();
+        users.add("Jan");
+        users.add("Peter");
+        users.add("Tom");
+        return users;
     }
 }
