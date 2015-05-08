@@ -5,8 +5,10 @@
  */
 package facade;
 
+import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import helloRemote.HelloBeanRemote;
 
 /**
  *
@@ -16,6 +18,19 @@ import javax.enterprise.context.RequestScoped;
 @RequestScoped
 public class Hello {
     private String name;
+    private String customGreeting;
+    
+    @EJB
+    private HelloBeanRemote helloRemote;
+
+    public String getCustomGreeting() {
+        return customGreeting;
+    }
+
+    public void setCustomGreeting(String customGreeting) {
+        this.customGreeting = helloRemote.sayHello(customGreeting);
+        //this.customGreeting = customGreeting;
+    }
     
     public Hello() {
         

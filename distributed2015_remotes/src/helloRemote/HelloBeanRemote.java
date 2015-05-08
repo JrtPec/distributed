@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hello;
+package helloRemote;
 
 import javax.ejb.Remote;
 
@@ -12,6 +12,6 @@ import javax.ejb.Remote;
  * @author Jan
  */
 @Remote
-public interface Hello {
-    public void sayHello(String name);
+public interface HelloBeanRemote {
+    public String sayHello(String name);
 }

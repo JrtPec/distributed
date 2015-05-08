@@ -19,6 +19,18 @@
             <h:commandButton id="submit" value="Submit" action="response"></h:commandButton>
             <h:commandButton id="reset" value="Reset" type="reset"></h:commandButton>
         </h:form>
+        <h:form>
+            <h2>Custom Greeting</h2>
+            <h:inputText id="username"
+                         title="My name is: "
+                         value="#{hello.customGreeting}"
+                         required="true"
+                         requiredMessage="Error"
+                         maxlength="25" />
+            <p></p>
+            <h:commandButton id="submit" value="Submit" action="response2"></h:commandButton>
+            <h:commandButton id="reset" value="Reset" type="reset"></h:commandButton>
+        </h:form>
     </h:body>
 </html>
 
