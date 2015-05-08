@@ -22,18 +22,8 @@ public class Hello {
     
     @EJB
     private HelloBeanRemote helloRemote;
-
-    public String getCustomGreeting() {
-        return customGreeting;
-    }
-
-    public void setCustomGreeting(String customGreeting) {
-        this.customGreeting = helloRemote.sayHello(customGreeting);
-        //this.customGreeting = customGreeting;
-    }
     
     public Hello() {
-        
     }
     
     public String getName(){
@@ -42,5 +32,13 @@ public class Hello {
     
     public void setName(String user_name){
         this.name = user_name;
+    }
+    
+    public String getCustomGreeting() {
+        return customGreeting;
+    }
+
+    public void setCustomGreeting(String customGreeting) {
+        this.customGreeting = helloRemote.sayHello(customGreeting);
     }
 }
