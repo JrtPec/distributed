@@ -5,7 +5,7 @@
  */
 package hello;
 
-import entities.Someone;
+import entities.Person;
 import helloRemote.HelloBeanRemote;
 import java.util.ArrayList;
 import javax.ejb.Stateless;
@@ -28,17 +28,17 @@ import javax.persistence.PersistenceContext;
     }
 
     @Override
-    public ArrayList<String> getUsers() {
-        Someone u1 = new Someone();
-        u1.setName("Jan");
-        em.persist(u1);
-        System.out.println(u1.getId() + u1.getName());
-        em.flush();
-        
-        ArrayList<String> users = new ArrayList<>();
-        users.add(u1.getName());
-        users.add("Peter");
-        users.add("Tom");
-        return users;
+    public ArrayList<String> getPersons() {
+        ArrayList<String> names = new ArrayList<>();
+        names.add("Peter");
+        names.add("Tom");
+        return names;
+    }
+
+    @Override
+    public void addPerson(String name) {
+        Person newPerson = new Person();
+        newPerson.setName(name);
+        em.persist(newPerson);
     }
 }
