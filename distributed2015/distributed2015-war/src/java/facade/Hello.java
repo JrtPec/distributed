@@ -32,6 +32,7 @@ public class Hello {
     }
     
     public void setName(String user_name){
+        helloRemote.addPerson(user_name);
         this.name = user_name;
     }
     
@@ -43,7 +44,7 @@ public class Hello {
         this.customGreeting = helloRemote.sayHello(customGreeting);
     }
 
-    public ArrayList<String> getUsers() {
-        return helloRemote.getUsers();
+    public ArrayList<String> getPersons() {
+        return helloRemote.getPersons();
     }
 }
