@@ -18,7 +18,8 @@ import java.util.ArrayList;
 @Named
 @RequestScoped
 public class Hello {
-    private String name;
+    private String first_name;
+    private String last_name;
     private String customGreeting;
     
     @EJB
@@ -27,13 +28,20 @@ public class Hello {
     public Hello() {
     }
     
-    public String getName(){
-        return name;
+    public String getFirst_name(){
+        return first_name;
     }
     
-    public void setName(String user_name){
-        helloRemote.addPerson(user_name);
-        this.name = user_name;
+    public void setFirst_name(String user_name){
+        this.first_name = user_name;
+    }
+
+    public String getLast_name() {
+        return last_name;
+    }
+
+    public void setLast_name(String last_name) {
+        this.last_name = last_name;
     }
     
     public String getCustomGreeting() {
@@ -42,6 +50,10 @@ public class Hello {
 
     public void setCustomGreeting(String customGreeting) {
         this.customGreeting = helloRemote.sayHello(customGreeting);
+    }
+    
+    public void addPerson(){
+        helloRemote.addPerson(this.getFirst_name(), this.getLast_name());
     }
 
     public ArrayList<String> getPersons() {

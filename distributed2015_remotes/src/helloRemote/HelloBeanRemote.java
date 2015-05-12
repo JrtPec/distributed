@@ -16,5 +16,5 @@ import javax.ejb.Remote;
 public interface HelloBeanRemote {
     public String sayHello(String name);
     public ArrayList<String> getPersons();
-    public void addPerson(String name);
+    public void addPerson(String first_name, String last_name);
 }
