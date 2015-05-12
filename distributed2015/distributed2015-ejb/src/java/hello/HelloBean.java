@@ -38,7 +38,7 @@ import javax.persistence.PersistenceContext;
     @Override
     public void addPerson(String name) {
         Person newPerson = new Person();
-        newPerson.setName(name);
+        newPerson.setFirst_name(name);
         em.persist(newPerson);
     }
 }
