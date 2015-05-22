@@ -10,6 +10,7 @@
         <h1>Welcome</h1>
         <h:form>
             <h2>Input name</h2>
+            <p>Enter a first and last name, and they will be added to the database</p>
             <h:inputText id="first_name"
                          title="My name is: "
                          value="#{hello.first_name}"
@@ -30,6 +31,7 @@
         </h:form>
         <h:form>
             <h2>Custom Greeting</h2>
+            <p>This method will push a name to the Hello Bean and print the result</p>
             <h:inputText id="username"
                          title="My name is: "
                          value="#{hello.customGreeting}"
@@ -41,9 +43,10 @@
             <h:commandButton id="reset" value="Reset" type="reset"></h:commandButton>
         </h:form>
         
-        <h:dataTable value="#{hello.persons}" var="name">
-            <h:column>#{name}</h:column>
+        <h2>User List</h2>
+        <h:dataTable value="#{hello.persons}" var="person">
+            <h:column>#{person.first_name}</h:column>
+            <h:column>#{person.last_name}</h:column>
         </h:dataTable>
     </h:body>
 </html>
-

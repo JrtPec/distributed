@@ -5,11 +5,12 @@
  */
 package facade;
 
+import entities.Person;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import helloRemote.HelloBeanRemote;
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -56,7 +57,7 @@ public class Hello {
         helloRemote.addPerson(this.getFirst_name(), this.getLast_name());
     }
 
-    public ArrayList<String> getPersons() {
-        return helloRemote.getPersons();
+    public List<Person> getPersons() {
+        return helloRemote.fetchPersons();
     }
 }

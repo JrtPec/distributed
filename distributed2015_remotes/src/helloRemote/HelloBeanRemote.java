@@ -5,7 +5,8 @@
  */
 package helloRemote;
 
-import java.util.ArrayList;
+import entities.Person;
+import java.util.List;
 import javax.ejb.Remote;
 
 /**
@@ -15,6 +16,6 @@ import javax.ejb.Remote;
 @Remote
 public interface HelloBeanRemote {
     public String sayHello(String name);
-    public ArrayList<String> getPersons();
+    public List<Person> fetchPersons();
     public void addPerson(String first_name, String last_name);
 }
