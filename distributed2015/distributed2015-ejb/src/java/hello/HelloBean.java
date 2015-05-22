@@ -7,7 +7,7 @@ package hello;
 
 import entities.Person;
 import helloRemote.HelloBeanRemote;
-import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -28,11 +28,8 @@ import javax.persistence.PersistenceContext;
     }
 
     @Override
-    public ArrayList<String> getPersons() {
-        ArrayList<String> names = new ArrayList<>();
-        names.add("Peter");
-        names.add("Tom");
-        return names;
+    public List<Person> fetchPersons() {      
+        return em.createNamedQuery("Person.findAll", Person.class).getResultList();
     }
 
     @Override
