@@ -41,7 +41,31 @@
         </h:dataTable>
         
         <br/>
-                
+        
+        <h:form>
+            <h2>Add Artist</h2>
+            <p>Enter a name, and the artist will be added to the database</p>
+            <h:outputLabel value="Name"/>
+            <h:inputText id="name"
+                         title="Name: "
+                         value="#{artistFacade.name}"
+                         required="true"
+                         requiredMessage="You need to enter a name"
+                         maxlength="25" />
+            <br/>
+            <p></p>
+            <h:commandButton id="submit" value="Submit" action="index">
+                <f:actionListener binding="#{artistFacade.addArtist()}" />
+            </h:commandButton>
+            <h:commandButton id="reset" value="Reset" type="reset"></h:commandButton>
+        </h:form>
+        
+        <h2>Artist List</h2>
+        <h:dataTable value="#{artistFacade.artists}" var="artist">
+            <h:column>#{artist.id}</h:column>
+            <h:column>#{artist.name}</h:column>
+        </h:dataTable>
+        
         <h1>Legacy Code</h1>
         <h:form>
             <h2>Custom Greeting</h2>
