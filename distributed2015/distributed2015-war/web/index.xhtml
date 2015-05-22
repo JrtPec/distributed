@@ -52,7 +52,6 @@
                          required="true"
                          requiredMessage="You need to enter a name"
                          maxlength="25" />
-            <br/>
             <p></p>
             <h:commandButton id="submit" value="Submit" action="index">
                 <f:actionListener binding="#{artistFacade.addArtist()}" />
@@ -64,6 +63,40 @@
         <h:dataTable value="#{artistFacade.artists}" var="artist">
             <h:column>#{artist.id}</h:column>
             <h:column>#{artist.name}</h:column>
+        </h:dataTable>
+        
+        <br/>
+        
+        <h:form>
+            <h2>Add Song</h2>
+            <p>Enter a name and artist ID and the song will be added to the database</p>
+            <h:outputLabel value="Name"/>
+            <h:inputText id="name"
+                         title="Name: "
+                         value="#{songFacade.name}"
+                         required="true"
+                         requiredMessage="You need to enter a name"
+                         maxlength="25" />
+            <br/>
+            <h:outputLabel value="Artist ID"/>
+            <h:inputText id="artistId"
+                         title="Artist ID: "
+                         value="#{songFacade.artistId}"
+                         required="true"
+                         requiredMessage="You need to enter an Artist ID"
+                         maxlength="25"/>
+            <p></p>
+            <h:commandButton id="submit" value="Submit" action="index">
+                <f:actionListener binding="#{songFacade.addSong()}" />
+            </h:commandButton>
+            <h:commandButton id="reset" value="Reset" type="reset"></h:commandButton>
+        </h:form>
+        
+        <h2>Song List</h2>
+        <h:dataTable value="#{songFacade.songs}" var="song">
+            <h:column>#{song.id}</h:column>
+            <h:column>#{song.name}</h:column>
+            <h:column>#{song.artist.name}</h:column>
         </h:dataTable>
         
         <h1>Legacy Code</h1>

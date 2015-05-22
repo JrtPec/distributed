@@ -33,4 +33,9 @@ import javax.persistence.PersistenceContext;
         newArtist.setName(name);
         em.persist(newArtist);
     }
+
+    @Override
+    public Artist getArtistById(int id) {
+        return (Artist) em.createNamedQuery("Artist.findId").setParameter("artistid", id).getSingleResult();
+    }
 }

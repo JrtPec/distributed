@@ -5,6 +5,7 @@
  */
 package helloRemote;
 
+import entities.Song;
 import entities.Artist;
 import java.util.List;
 import javax.ejb.Remote;
@@ -14,8 +15,7 @@ import javax.ejb.Remote;
  * @author Jan
  */
 @Remote
-public interface ArtistBeanRemote {
-    public List<Artist> fetchArtists();
-    public void addArtist(String name);
-    public Artist getArtistById(int id);
+public interface SongBeanRemote {
+    public List<Song> fetchSongs();
+    public void addSong(String name, Artist artist);
 }
