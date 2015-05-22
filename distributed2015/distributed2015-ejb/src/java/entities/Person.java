@@ -6,10 +6,12 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 /**
  *
@@ -23,6 +25,8 @@ public class Person implements Serializable {
     private Long id;
     private String first_name;
     private String last_name;
+    @ManyToMany(mappedBy = "persons")
+    private List<Song> songs;
 
     public Long getId() {
         return id;
