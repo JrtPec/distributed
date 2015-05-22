@@ -13,7 +13,7 @@
             <p>Enter a first and last name, and they will be added to the database</p>
             <h:outputLabel value="First Name"/>
             <h:inputText id="first_name"
-                         title="My name is: "
+                         title="First Name: "
                          value="#{hello.first_name}"
                          required="true"
                          requiredMessage="You need to enter a first name"
@@ -21,13 +21,13 @@
             <br/>
             <h:outputLabel value="Last Name"/>
             <h:inputText id="last_name"
-                         title="My last name is: "
+                         title="Last Name: "
                          value="#{hello.last_name}"
                          required="true"
                          requiredMessage="You need to enter a last name"
                          maxlength="25"/>
             <p></p>
-            <h:commandButton id="submit" value="Submit" action="response">
+            <h:commandButton id="submit" value="Submit" action="index">
                 <f:actionListener binding="#{hello.addPerson()}" />
             </h:commandButton>
             <h:commandButton id="reset" value="Reset" type="reset"></h:commandButton>
@@ -41,7 +41,7 @@
         </h:dataTable>
         
         <br/>
-        
+                
         <h1>Legacy Code</h1>
         <h:form>
             <h2>Custom Greeting</h2>
