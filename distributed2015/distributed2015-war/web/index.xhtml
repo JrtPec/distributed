@@ -35,11 +35,13 @@
         
         <h2>User List</h2>
         <h:dataTable value="#{hello.persons}" var="person">
+            <h:column>#{person.id}</h:column>
             <h:column>#{person.first_name}</h:column>
             <h:column>#{person.last_name}</h:column>
         </h:dataTable>
         
-        <br></br>
+        <br/>
+        
         <h1>Legacy Code</h1>
         <h:form>
             <h2>Custom Greeting</h2>
