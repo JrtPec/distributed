@@ -8,16 +8,19 @@ package entities;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQuery;
 
 /**
  *
  * @author Jan
  */
 @Entity
+@NamedQuery(name="Person.findAll", query="SELECT P FROM Person P")
 public class Person implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -76,5 +79,4 @@ public class Person implements Serializable {
     public String toString() {
         return "entities.Person[ id=" + id + " ]";
     }
-    
 }
