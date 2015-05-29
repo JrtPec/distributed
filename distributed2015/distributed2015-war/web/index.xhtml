@@ -9,26 +9,122 @@
     <h:body>
         <h1>Welcome</h1>
         <h:form>
-            <h2>Input name</h2>
+            <h2>Add User</h2>
             <p>Enter a first and last name, and they will be added to the database</p>
+            <h:outputLabel value="First Name"/>
             <h:inputText id="first_name"
-                         title="My name is: "
+                         title="First Name: "
                          value="#{hello.first_name}"
                          required="true"
-                         requiredMessage="Error"
+                         requiredMessage="You need to enter a first name"
                          maxlength="25" />
+            <br/>
+            <h:outputLabel value="Last Name"/>
             <h:inputText id="last_name"
-                         title="My last name is: "
+                         title="Last Name: "
                          value="#{hello.last_name}"
                          required="true"
-                         requiredMessage="Error"
+                         requiredMessage="You need to enter a last name"
                          maxlength="25"/>
             <p></p>
-            <h:commandButton id="submit" value="Submit" action="response">
+            <h:commandButton id="submit" value="Submit" action="index">
                 <f:actionListener binding="#{hello.addPerson()}" />
             </h:commandButton>
             <h:commandButton id="reset" value="Reset" type="reset"></h:commandButton>
         </h:form>
+        
+        <h2>User List</h2>
+        <h:dataTable value="#{hello.persons}" var="person">
+            <h:column>#{person.id}</h:column>
+            <h:column>#{person.first_name}</h:column>
+            <h:column>#{person.last_name}</h:column>
+        </h:dataTable>
+        
+        <br/>
+        
+        <h:form>
+            <h2>Add Artist</h2>
+            <p>Enter a name, and the artist will be added to the database</p>
+            <h:outputLabel value="Name"/>
+            <h:inputText id="name"
+                         title="Name: "
+                         value="#{artistFacade.name}"
+                         required="true"
+                         requiredMessage="You need to enter a name"
+                         maxlength="25" />
+            <p></p>
+            <h:commandButton id="submit" value="Submit" action="index">
+                <f:actionListener binding="#{artistFacade.addArtist()}" />
+            </h:commandButton>
+            <h:commandButton id="reset" value="Reset" type="reset"></h:commandButton>
+        </h:form>
+        
+        <h2>Artist List</h2>
+        <h:dataTable value="#{artistFacade.artists}" var="artist">
+            <h:column>#{artist.id}</h:column>
+            <h:column>#{artist.name}</h:column>
+        </h:dataTable>
+        
+        <br/>
+        
+        <h:form>
+            <h2>Add Song</h2>
+            <p>Enter a name and artist ID and the song will be added to the database</p>
+            <h:outputLabel value="Name"/>
+            <h:inputText id="name"
+                         title="Name: "
+                         value="#{songFacade.name}"
+                         required="true"
+                         requiredMessage="You need to enter a name"
+                         maxlength="25" />
+            <br/>
+            <h:outputLabel value="Artist ID"/>
+            <h:inputText id="artistId"
+                         title="Artist ID: "
+                         value="#{songFacade.artistId}"
+                         required="true"
+                         requiredMessage="You need to enter an Artist ID"
+                         maxlength="25"/>
+            <p></p>
+            <h:commandButton id="submit" value="Submit" action="index">
+                <f:actionListener binding="#{songFacade.addSong()}" />
+            </h:commandButton>
+            <h:commandButton id="reset" value="Reset" type="reset"></h:commandButton>
+        </h:form>
+        
+        <h2>Song List</h2>
+        <h:dataTable value="#{songFacade.songs}" var="song">
+            <h:column>#{song.id}</h:column>
+            <h:column>#{song.name}</h:column>
+            <h:column>#{song.artist.name}</h:column>
+        </h:dataTable>
+        
+        <h:form>
+            <h2>Buy a Song for a user</h2>
+            <p>Enter a User ID and a Song ID</p>
+            <h:outputLabel value="User ID"/>
+            <h:inputText id="id"
+                         title="User ID: "
+                         value="#{hello.userId}"
+                         required="true"
+                         requiredMessage="You need to enter a userId"
+                         maxlength="25" />
+            <br/>
+            <h:outputLabel value="Song ID"/>
+            <h:inputText id="SongId"
+                         title="Song ID: "
+                         value="#{hello.songId}"
+                         required="true"
+                         requiredMessage="You need to enter a Song Id"
+                         maxlength="25"/>
+            <p></p>
+            <h:commandButton id="submit" value="Submit" action="index">
+                <f:actionListener binding="#{hello.buySong()}" />
+            </h:commandButton>
+            <h:commandButton id="reset" value="Reset" type="reset"></h:commandButton>
+        </h:form>
+        
+        <h1>Legacy Code</h1>
         <h:form>
             <h2>Custom Greeting</h2>
             <p>This method will push a name to the Hello Bean and print the result</p>

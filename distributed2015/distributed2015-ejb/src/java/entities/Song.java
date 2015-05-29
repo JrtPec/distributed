@@ -16,6 +16,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -27,7 +28,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "SONG")
 @XmlRootElement
-@NamedQuery(name = "Song.findAll", query = "SELECT s FROM Song s")
+@NamedQueries ({
+    @NamedQuery(name="Song.findAll",
+            query="SELECT S FROM Song S"),
+    @NamedQuery(name="Song.findId",
+            query="SELECT S FROM Song S WHERE S.id = :songid"),
+})
 public class Song implements Serializable {
     private static final long serialVersionUID = 1L;
     @ManyToMany
@@ -59,6 +65,30 @@ public class Song implements Serializable {
 
     public String getName() {
         return name;
+    }
+
+    public void setPersons(List<Person> persons) {
+        this.persons = persons;
+    }
+
+    public void setArtist(Artist artist) {
+        this.artist = artist;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setGenre(Genre genre) {
+        this.genre = genre;
+    }
+    
+    public void addPerson(Person person){
+        this.persons.add(person);
     }
 
     @Override

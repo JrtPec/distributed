@@ -6,6 +6,7 @@
 package hello;
 
 import entities.Person;
+import entities.Song;
 import helloRemote.HelloBeanRemote;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -38,5 +39,15 @@ public class HelloBean implements HelloBeanRemote {
         newPerson.setFirst_name(first_name);
         newPerson.setLast_name(last_name);
         em.persist(newPerson);
+    }
+
+    @Override
+    public void buySong(int userId, int songId) {
+        Person p = em.createNamedQuery("Person.findId", Person.class).setParameter("personid", userId).getSingleResult();
+        Song s = em.createNamedQuery("Song.findId", Song.class).setParameter("songid", songId).getSingleResult();
+        
+        s.addPerson(p);
+        
+        em.persist(s);
     }
 }

@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -21,6 +23,12 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @XmlRootElement
+@NamedQueries({
+    @NamedQuery(name="Artist.findAll",
+            query="SELECT A FROM Artist A"),
+    @NamedQuery(name="Artist.findId",
+            query="SELECT A FROM Artist A WHERE A.id = :artistid"),
+})
 public class Artist implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -41,6 +49,14 @@ public class Artist implements Serializable {
     @XmlTransient
     public List<Song> getSongs(){
         return songs;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
