@@ -5,7 +5,7 @@
  */
 package service;
 
-import entities.Person;
+import entities.News;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -24,53 +24,53 @@ import javax.ws.rs.Produces;
  * @author Karl
  */
 @Stateless
-@Path("person")
-public class PersonFacadeREST extends AbstractFacade<Person> {
-    @PersistenceContext(unitName = "distributed2015-warPU")
+@Path("news")
+public class NewsFacadeREST extends AbstractFacade<News> {
+    @PersistenceContext(unitName = "RestTestPU")
     private EntityManager em;
 
-    public PersonFacadeREST() {
-        super(Person.class);
+    public NewsFacadeREST() {
+        super(News.class);
     }
 
     @POST
     @Override
     @Consumes({"application/xml", "application/json"})
-    public void create(Person entity) {
+    public void create(News entity) {
         super.create(entity);
     }
 
     @PUT
     @Path("{id}")
     @Consumes({"application/xml", "application/json"})
-    public void edit(@PathParam("id") Long id, Person entity) {
+    public void edit(@PathParam("id") Integer id, News entity) {
         super.edit(entity);
     }
 
     @DELETE
     @Path("{id}")
-    public void remove(@PathParam("id") Long id) {
+    public void remove(@PathParam("id") Integer id) {
         super.remove(super.find(id));
     }
 
     @GET
     @Path("{id}")
     @Produces({"application/xml", "application/json"})
-    public Person find(@PathParam("id") Long id) {
+    public News find(@PathParam("id") Integer id) {
         return super.find(id);
     }
 
     @GET
     @Override
     @Produces({"application/xml", "application/json"})
-    public List<Person> findAll() {
+    public List<News> findAll() {
         return super.findAll();
     }
 
     @GET
     @Path("{from}/{to}")
     @Produces({"application/xml", "application/json"})
-    public List<Person> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
+    public List<News> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         return super.findRange(new int[]{from, to});
     }
 
