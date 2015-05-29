@@ -21,6 +21,8 @@ import java.util.List;
 public class Hello {
     private String first_name;
     private String last_name;
+    private int userId;
+    private int songId;
     private String customGreeting;
     
     @EJB
@@ -44,6 +46,22 @@ public class Hello {
     public void setLast_name(String last_name) {
         this.last_name = last_name;
     }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public int getSongId() {
+        return songId;
+    }
+
+    public void setSongId(int songId) {
+        this.songId = songId;
+    }
     
     public String getCustomGreeting() {
         return customGreeting;
@@ -55,6 +73,10 @@ public class Hello {
     
     public void addPerson(){
         helloRemote.addPerson(this.getFirst_name(), this.getLast_name());
+    }
+    
+    public void buySong(){
+        helloRemote.buySong(this.getUserId(), this.getSongId());
     }
 
     public List<Person> getPersons() {

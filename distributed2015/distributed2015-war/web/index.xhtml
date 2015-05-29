@@ -99,6 +99,31 @@
             <h:column>#{song.artist.name}</h:column>
         </h:dataTable>
         
+        <h:form>
+            <h2>Buy a Song for a user</h2>
+            <p>Enter a User ID and a Song ID</p>
+            <h:outputLabel value="User ID"/>
+            <h:inputText id="id"
+                         title="User ID: "
+                         value="#{hello.userId}"
+                         required="true"
+                         requiredMessage="You need to enter a userId"
+                         maxlength="25" />
+            <br/>
+            <h:outputLabel value="Song ID"/>
+            <h:inputText id="SongId"
+                         title="Song ID: "
+                         value="#{hello.songId}"
+                         required="true"
+                         requiredMessage="You need to enter a Song Id"
+                         maxlength="25"/>
+            <p></p>
+            <h:commandButton id="submit" value="Submit" action="index">
+                <f:actionListener binding="#{hello.buySong()}" />
+            </h:commandButton>
+            <h:commandButton id="reset" value="Reset" type="reset"></h:commandButton>
+        </h:form>
+        
         <h1>Legacy Code</h1>
         <h:form>
             <h2>Custom Greeting</h2>
