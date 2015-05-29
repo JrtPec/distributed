@@ -7,7 +7,10 @@ package entities;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,9 +36,10 @@ public class Artist implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="artist_id")
     private Long id;
     private String name;
-    @OneToMany(mappedBy = "artist")
+    @OneToMany(mappedBy = "artist", fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
     private List<Song> songs;
     
     public Long getId() {
@@ -57,6 +61,10 @@ public class Artist implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+    
+    public void addSong(Song song){
+        songs.add(song);
     }
 
     @Override

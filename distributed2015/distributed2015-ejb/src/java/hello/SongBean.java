@@ -33,6 +33,9 @@ import javax.persistence.PersistenceContext;
         Song newSong = new Song();
         newSong.setName(name);
         newSong.setArtist(artist);
-        em.persist(newSong);
+        
+        artist.addSong(newSong);
+        
+        em.merge(artist);
     }
 }

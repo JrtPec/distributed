@@ -6,6 +6,7 @@
 package facade;
 
 import entities.Artist;
+import entities.Song;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
@@ -21,6 +22,7 @@ import java.util.List;
 public class ArtistFacade {
     private String name;
     private Artist artist;
+    private List<Song> songs;
     
     @EJB
     private ArtistBeanRemote artistRemote;
@@ -51,10 +53,19 @@ public class ArtistFacade {
     public void setArtist(Artist artist) {
         this.artist = artist;
     }
+
+    public List<Song> getSongs() {
+        return songs;
+    }
+
+    public void setSongs(List<Song> songs) {
+        this.songs = songs;
+    }
     
     public Artist fetchArtist(int id){
         this.setArtist(artistRemote.getArtistById(id));
         this.setName(this.artist.getName());
-        return this.artist;
+        this.setSongs(this.artist.getSongs());
+        return artist;
     }
 }

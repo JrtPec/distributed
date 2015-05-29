@@ -10,8 +10,14 @@
             <h:outputText value="#{artistFacade.fetchArtist(param['artistId']).name}"/>
         </h1>
         <h2>
+            ID: 
             <h:outputText value="#{artistFacade.artist.id}"/>
         </h2>
+        <h2>Songs: </h2>
+        <h:dataTable value="#{artistFacade.artist.songs}" var="song">
+            <h:column>#{song.id}</h:column>
+            <h:column>#{song.name}</h:column>
+        </h:dataTable>
     </h:body>
 </html>
 

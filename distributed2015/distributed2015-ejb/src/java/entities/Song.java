@@ -14,6 +14,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -39,6 +40,7 @@ public class Song implements Serializable {
     @ManyToMany
     private List<Person> persons;
     @ManyToOne
+    @JoinColumn(name="artist_id")
     private Artist artist;
     
     @Id
