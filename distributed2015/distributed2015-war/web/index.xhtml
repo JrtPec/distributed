@@ -62,7 +62,11 @@
         <h2>Artist List</h2>
         <h:dataTable value="#{artistFacade.artists}" var="artist">
             <h:column>#{artist.id}</h:column>
-            <h:column>#{artist.name}</h:column>
+            <h:column>
+                <h:link value="#{artist.name}" outcome="artist">
+                    <f:param id="artistId" name="artistId" value="#{artist.id}"/>
+                </h:link>
+            </h:column>
         </h:dataTable>
         
         <br/>

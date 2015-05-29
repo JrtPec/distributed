@@ -20,6 +20,7 @@ import java.util.List;
 @RequestScoped
 public class ArtistFacade {
     private String name;
+    private Artist artist;
     
     @EJB
     private ArtistBeanRemote artistRemote;
@@ -41,5 +42,19 @@ public class ArtistFacade {
 
     public List<Artist> getArtists() {
         return artistRemote.fetchArtists();
+    }
+
+    public Artist getArtist() {
+        return artist;
+    }
+
+    public void setArtist(Artist artist) {
+        this.artist = artist;
+    }
+    
+    public Artist fetchArtist(int id){
+        this.setArtist(artistRemote.getArtistById(id));
+        this.setName(this.artist.getName());
+        return this.artist;
     }
 }
