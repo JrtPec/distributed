@@ -14,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -21,6 +22,7 @@ import javax.persistence.NamedQuery;
  */
 @Entity
 @NamedQuery(name="Person.findAll", query="SELECT P FROM Person P")
+@XmlRootElement
 public class Person implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

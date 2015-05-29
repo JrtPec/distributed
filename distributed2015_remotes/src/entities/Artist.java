@@ -7,58 +7,40 @@ package entities;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author arne
  */
 @Entity
-@Table(name = "SONG")
 @XmlRootElement
-@NamedQuery(name = "Song.findAll", query = "SELECT s FROM Song s")
-public class Song implements Serializable {
+public class Artist implements Serializable {
     private static final long serialVersionUID = 1L;
-    @ManyToMany
-    private List<Person> persons;
-    @ManyToOne
-    private Artist artist;
-    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(name = "NAME")
     private String name;
+    @OneToMany(mappedBy = "artist")
+    private List<Song> songs;
     
-    public enum Genre{ROCK,CLASSIC,POP,RAP,ELECTRONIC};
-    
-    @Enumerated(EnumType.ORDINAL)
-    private Genre genre;
-    
-    public Genre getGenre(){
-        return genre;
-    }
     public Long getId() {
         return id;
     }
 
-    public Artist getArtist() {
-        return artist;
+    public void setId(Long id) {
+        this.id = id;
     }
-
-    public String getName() {
-        return name;
+    
+    @XmlTransient
+    public List<Song> getSongs(){
+        return songs;
     }
 
     @Override
@@ -71,10 +53,10 @@ public class Song implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Song)) {
+        if (!(object instanceof Artist)) {
             return false;
         }
-        Song other = (Song) object;
+        Artist other = (Artist) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -83,7 +65,7 @@ public class Song implements Serializable {
 
     @Override
     public String toString() {
-        return "entities.Song[ id=" + id + " ]";
+        return "entities.Artist[ id=" + id + " ]";
     }
     
 }

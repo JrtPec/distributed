@@ -6,12 +6,15 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -19,6 +22,7 @@ import javax.persistence.NamedQuery;
  */
 @Entity
 @NamedQuery(name="Person.findAll", query="SELECT P FROM Person P")
+@XmlRootElement
 public class Person implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -26,6 +30,8 @@ public class Person implements Serializable {
     private Long id;
     private String first_name;
     private String last_name;
+    @ManyToMany(mappedBy = "persons")
+    private List<Song> songs;
 
     public Long getId() {
         return id;

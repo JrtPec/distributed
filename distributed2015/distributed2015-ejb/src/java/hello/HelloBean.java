@@ -17,7 +17,7 @@ import javax.persistence.PersistenceContext;
  * @author Jan
  */
 @Stateless
-    public class HelloBean implements HelloBeanRemote {
+public class HelloBean implements HelloBeanRemote {
     
     @PersistenceContext
     private EntityManager em;
