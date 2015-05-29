@@ -139,12 +139,6 @@
             <h:commandButton id="reset" value="Reset" type="reset"></h:commandButton>
         </h:form>
         
-        <h2>User List</h2>
-        <h:dataTable value="#{hello.persons}" var="person">
-            <h:column>#{person.first_name}</h:column>
-            <h:column>#{person.last_name}</h:column>
-        </h:dataTable>
-        
         <p><a href="http://localhost:8080/distributed2015-war/CommentsList">Leave A Comment</a></p>
     </h:body>
 </html>
