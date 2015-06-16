@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -35,7 +36,7 @@ public class Person implements Serializable {
     private Long id;
     private String first_name;
     private String last_name;
-    @ManyToMany(mappedBy = "persons")
+    @ManyToMany(mappedBy = "persons", fetch=FetchType.EAGER)
     private List<Song> songs;
 
     public Long getId() {
@@ -71,6 +72,14 @@ public class Person implements Serializable {
         int hash = 0;
         hash += (id != null ? id.hashCode() : 0);
         return hash;
+    }
+
+    public List<Song> getSongs() {
+        return songs;
+    }
+
+    public void setSongs(List<Song> songs) {
+        this.songs = songs;
     }
 
     @Override

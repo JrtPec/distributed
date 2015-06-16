@@ -47,7 +47,14 @@ public class HelloBean implements HelloBeanRemote {
         Song s = em.createNamedQuery("Song.findId", Song.class).setParameter("songid", songId).getSingleResult();
         
         s.addPerson(p);
+        p.addSong(s);
         
         em.persist(s);
+        em.persist(p);
+    }
+
+    @Override
+    public Person getPersonById(int id) {
+        return (Person) em.createNamedQuery("Person.findId").setParameter("personid", id).getSingleResult();
     }
 }

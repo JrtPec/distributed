@@ -19,4 +19,5 @@ public interface HelloBeanRemote {
     public List<Person> fetchPersons();
     public void addPerson(String first_name, String last_name);
     public void buySong(int userId, int songId);
+    public Person getPersonById(int id);
 }

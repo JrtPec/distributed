@@ -6,6 +6,7 @@
 package facade;
 
 import entities.Person;
+import entities.Song;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
@@ -24,6 +25,8 @@ public class Hello {
     private int userId;
     private int songId;
     private String customGreeting;
+    private Person person;
+    private List<Song> songs;
     
     @EJB
     private HelloBeanRemote helloRemote;
@@ -81,5 +84,29 @@ public class Hello {
 
     public List<Person> getPersons() {
         return helloRemote.fetchPersons();
+    }
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+
+    public List<Song> getSongs() {
+        return songs;
+    }
+
+    public void setSongs(List<Song> songs) {
+        this.songs = songs;
+    }
+    
+    public Person fetchPerson(int id){
+        this.setPerson(helloRemote.getPersonById(id));
+        this.setFirst_name(this.person.getFirst_name());
+        this.setLast_name(this.person.getLast_name());
+        this.setSongs(this.person.getSongs());
+        return person;
     }
 }

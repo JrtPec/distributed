@@ -36,8 +36,11 @@
         <h2>User List</h2>
         <h:dataTable value="#{hello.persons}" var="person">
             <h:column>#{person.id}</h:column>
-            <h:column>#{person.first_name}</h:column>
-            <h:column>#{person.last_name}</h:column>
+            <h:column>
+                <h:link value="#{person.first_name} #{person.last_name}" outcome="person">
+                    <f:param id="personId" name="personId" value="#{person.id}"/>
+                </h:link>
+            </h:column>
         </h:dataTable>
         
         <br/>
