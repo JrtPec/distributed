@@ -10,6 +10,7 @@ import entities.Song;
 import helloRemote.HelloBeanRemote;
 import java.util.List;
 import javax.ejb.Stateless;
+import javax.interceptor.Interceptors;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -24,6 +25,7 @@ public class HelloBean implements HelloBeanRemote {
     private EntityManager em;
   
     @Override
+    @Interceptors(interceptor.class)
     public String sayHello(String name) {
         return "Bean speaking. Hello "+name;
     }
